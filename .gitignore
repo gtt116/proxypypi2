@@ -1,0 +1,4 @@
+.*\.pyc
+proxypypi.egg-info
+dist
+proxypypi/.*\.pyc
