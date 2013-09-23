@@ -2,3 +2,4 @@
 proxypypi.egg-info
 dist
 proxypypi/.*\.pyc
+.venv
