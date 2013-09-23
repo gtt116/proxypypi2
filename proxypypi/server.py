@@ -9,7 +9,6 @@ import multiprocessing
 import mimetypes
 
 from distlib.locators import SimpleScrapingLocator, DistlibException
-from distlib.locators import locate as dist_locate
 import lockfile
 from bottle import get, abort, run, static_file, HTTPResponse
 from proxypypi.daemon import Daemon
@@ -244,9 +243,6 @@ def find_files(directory):
 def search(prefix, name=''):
     assert pkgdir is not None, 'configure_pkgdir() not called!'
     if name:
-        temp = dist_locate(name)
-        if temp:
-            name = temp.name
         # TODO use distlib to find the appropriate files?
         packages = [path for f, path in find_files(pkgdir)
             if f.startswith(name + '-')]
