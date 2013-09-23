@@ -8,7 +8,7 @@ setup(
     author="Richard Jones",
     author_email="rjones@ekit-inc.com",
     description="A PyPI caching proxy",
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     url='https://bitbucket.org/r1chardj0n3s/proxypypi',
     license="BSD",
     packages=['proxypypi'],
