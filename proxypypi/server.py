@@ -241,11 +241,15 @@ def find_files(directory):
 
 
 def search(prefix, name=''):
+    def match(query, target_package):
+        target_name = target_package.rsplit('-')[0].lower()
+        return query == target_name
+
     assert pkgdir is not None, 'configure_pkgdir() not called!'
     if name:
         # TODO use distlib to find the appropriate files?
         packages = [path for f, path in find_files(pkgdir)
-            if f.startswith(name + '-')]
+            if match(name, f)]
         if not packages:
             packages = locate(name)
     else:
