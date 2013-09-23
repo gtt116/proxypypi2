@@ -11,7 +11,7 @@ import mimetypes
 from distlib.locators import SimpleScrapingLocator, DistlibException
 import lockfile
 from bottle import get, abort, run, static_file, HTTPResponse
-from proxypypi.daemon import Daemon
+from proxypypi2.daemon import Daemon
 
 locator = None
 pkgdir = None
@@ -369,7 +369,7 @@ class HelpOptionParser(optparse.OptionParser):
 
 
 def main():
-    from proxypypi import __version__
+    from proxypypi2 import __version__
     parser = HelpOptionParser(usage="usage: %prog [options] command",
         version="%prog " + __version__)
 
