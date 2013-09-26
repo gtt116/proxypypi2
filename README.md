@@ -6,7 +6,7 @@ Since `proxypypi` was out of work, so I fork it.
 Caching PyPI Proxy
 ==================
 
-Use proxypypi to set up a transparent caching proxy to PyPI
+Use proxypypi2 to set up a transparent caching proxy to PyPI
 (https://pypy.python.org/) to:
 
 1. make your installs res/ilient against Internet/PyPI issues,
@@ -39,20 +39,20 @@ least for me).
 Usage
 -----
 
-Setup of proxypypi requires:
+Setup of proxypypi2 requires:
 
-1. "pip install proxypypi"
+1. "pip install proxypypi2"
 2. cd to some directory you would like files to be cached in
-3. proxypypi run
+3. proxypypi2 run
 
-There are some command-line arguments (see "proxypypi -h") that allow some
+There are some command-line arguments (see "proxypypi2 -h") that allow some
 run-time behaviour control. Notably "-d" which can configure the directory
 to cache in.
 
 Additionally the proxy may run in the background, in which case you need to
 supply three additional command-line arguments: "-P" (PID file), "-l" (log
 file) and "-o" (console output file) and use one of the daemon control commands
-instead of "run". See "proxypypi -h" for the commands.
+instead of "run". See "proxypypi2 -h" for the commands.
 
 Once running you may perform pip installs using the proxy by including the
 proxy in the pip command line using the "-i" argument:
@@ -62,12 +62,21 @@ proxy in the pip command line using the "-i" argument:
 Any packages not cached will be fetched into the cache and the install will
 continue as normal.
 
+Update
+------
+
+Proxypypi2 now support update cached packages.
+
+Follow these steps:
+
+1. cd to your cache directory
+2. proxypypi2 update
 
 Private (or Manually Downloaded) Packages
 -----------------------------------------
 
 Package distribution files added to the root of the package directory served
-by proxypypi will be served alongside those it proxies requests for. You may,
+by proxypypi2 will be served alongside those it proxies requests for. You may,
 if you wish, make package-named subdirectories, but it's not necessary.
 
 
