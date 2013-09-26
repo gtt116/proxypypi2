@@ -3,3 +3,6 @@ proxypypi.egg-info
 dist
 .venv
 .ropeproject/
+proxypi.pid
+proxypipy.console
+proxypypi.log
