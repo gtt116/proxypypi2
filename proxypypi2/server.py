@@ -250,8 +250,7 @@ def search(prefix, name=''):
     assert pkgdir is not None, 'configure_pkgdir() not called!'
     if name:
         # TODO use distlib to find the appropriate files?
-        packages = [path for f, path in find_files(pkgdir)
-            if match(name, f)]
+        packages = [path for f, path in find_files(pkgdir) if match(name, f)]
         if not packages:
             packages = locate(name)
     else:
