@@ -96,6 +96,14 @@ def package_file(filename):
     return partial_static_file(filename, './', size)
 
 
+def cached_packages():
+    """Get alpha ordered list of all package in cache dir"""
+    assert pkgdir is not None, 'configure_pkgdir() not called!'
+    x = os.listdir('.')
+    x.sort()
+    return x
+
+
 def download(url, filename):
     '''Download the file indicated from the url given.
 
@@ -340,6 +348,18 @@ class Server(Daemon):
         log.info("caching packages in %s" % self.opt.cache)
         configure_pkgdir(self.opt.cache)
 
+    def update(self):
+        # Do basic configuration
+        self.start()
+
+        for package in cached_packages():
+            log.info('Update: %s' % package)
+
+            try:
+                locate(package)
+            except Exception:
+                log.error('%s update failed, ignore it.' % package)
+
     def process(self):
         # note: I specify a *large* gunicorn timeout here as I saw timeouts
         # on even modest (<10MB) file download attempts by clients :-(
@@ -356,6 +376,7 @@ Commands:
     "condstart"     start the daemon if it's not running
     "maybestop"     stop the active process only if it's running
     "status"        display the status of the active process
+    "update"        update the cached packages
 
 When specifying anything other than "run" you must supply the pidfile, logfile
 and console out file arguments.

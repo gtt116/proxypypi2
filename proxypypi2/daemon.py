@@ -214,6 +214,9 @@ class Daemon(object):
         '''
         raise NotImplementedError
 
+    def update(self):
+        raise NotImplementedError
+
     def cleanup(self):
         '''Executed as the daemon is exiting.
 
@@ -240,6 +243,7 @@ class Daemon(object):
             "condstart"     start the daemon if it's not running
             "maybestop"     stop the active process only if it's running
             "status"        display the status of the active process
+            "update"        update the cached packages
         '''
         pidfile = self.pid_file or '<undefined>'
         if command == 'help':
@@ -247,6 +251,9 @@ class Daemon(object):
             return
         if command == 'status':
             self.status()
+            return
+        if command == 'update':
+            self.update()
             return
         if command == 'run':
             self.should_separate = False
