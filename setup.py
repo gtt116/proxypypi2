@@ -6,7 +6,7 @@ setup(
     name='proxypypi2',
     version=__version__,
     author="Richard Jones, Tim Gao",
-    author_email="rjones@ekit-inc.com, gtt116@126.com",
+    author_email="rjones@ekit-inc.com, gtt116@gmail.com",
     description="A PyPI caching proxy",
     long_description=open('README.md').read(),
     url='https://github.com/gtt116/proxypypi2',
