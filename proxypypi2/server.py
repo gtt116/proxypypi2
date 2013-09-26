@@ -240,10 +240,12 @@ def find_files(directory):
                     directory))
 
 
+def match(query, target_package):
+    target_name = target_package.rsplit('-', 1)[0]
+    return query.lower() == target_name.lower()
+
+
 def search(prefix, name=''):
-    def match(query, target_package):
-        target_name = target_package.rsplit('-')[0].lower()
-        return query == target_name
 
     assert pkgdir is not None, 'configure_pkgdir() not called!'
     if name:
