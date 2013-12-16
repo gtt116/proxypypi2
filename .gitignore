@@ -6,3 +6,8 @@ dist
 proxypi.pid
 proxypipy.console
 proxypypi.log
+mirrors/
+proxypypi2.egg-info/
+proxypypi2.console
+proxypypi2.log
+proxypypi2.pid
