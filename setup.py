@@ -17,5 +17,5 @@ setup(
             'proxypypi2 = proxypypi2.server:main',
         ],
     },
-    install_requires=['gunicorn', 'bottle', 'lockfile', 'distlib>=0.1.2'],
+    install_requires=['gunicorn', 'bottle', 'lockfile', 'distlib>=0.1.7'],
 )
