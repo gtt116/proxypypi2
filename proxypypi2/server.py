@@ -113,6 +113,18 @@ def download(url, filename):
     The downloading process will lock the size file to prevent other
     (race-conditioned) download processes running in parallel.
     '''
+    def mirror_url(url):
+        """
+        Replace url schema and host with http://pypi.douban.com
+        """
+        res = list(urlparse.urlparse(url)[:])
+        res[0] = 'http'
+        res[1] = 'pypi.douban.com'
+        return urlparse.urlunparse(res)
+
+    log.debug("Going to download from url: %s" % url)
+    url = mirror_url(url)
+    log.debug("Using new url to download: %s" % url)
     lock = lockfile.FileLock(filename + '.size')
     # TODO if the process dies between here and the try/finally then the lock
     # file could be left on disk...
